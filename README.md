@@ -17,11 +17,6 @@ We use **MHA (Multi-Head Attention)** as our baseline and evaluate three compres
 | **GQA** (Grouped Query Attention) | Architectural | 4× | ❌ No |
 | **H2O** (Heavy Hitter Oracle) | Eviction-based | Unbounded | ✅ Yes |
 | **FP8 / INT8 Quantization** | Quantization | 2× | Minimal |
-
-**Core finding:** GQA and FP8 reduce memory without sacrificing context retention.
-H2O achieves the most aggressive compression but collapses the effective context
-window from 8,192 -> 2048 — a 4× reduction for 5× cache saving.
-
 ---
 
 ## Repository Structure
@@ -53,12 +48,8 @@ Evaluates whether compression causes the model to forget facts buried deep in co
 A random 6-digit magic number is hidden at varying depths and the model is asked to retrieve it.
 
 **H2O NIAH** — measures the effective context window under eviction:
-- Baseline (no eviction): retrieval succeeds across 8,192 token context
-- H2O (budget=1,024): effective context window collapses to ~1024 tokens
 
 **FP8 / INT8 NIAH** — measures whether quantization degrades retrieval:
-- INT8 quantization preserves retrieval accuracy across all tested context depths
-- Confirms that precision reduction does not meaningfully shrink the effective context window
 
 ---
 
