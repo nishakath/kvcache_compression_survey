@@ -75,10 +75,6 @@ open in Google Colab and run top to bottom.
 All experiments run on a **G4 GPU (32GB VRAM)** via Google Colab.
 LLaMA-3-8B config is used for memory scaling experiments (random weights, no download needed).
 
----
-
-
----
 
 ## Authors
 
